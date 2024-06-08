@@ -2,13 +2,13 @@
 var loginForm = document.getElementById('loginForm');
 var signinEmail = document.getElementById('signinEmail');
 var signinPassword = document.getElementById('signinPassword');
-var loginAlert = document.getElementById('loginAlert');
+var loginAlert = document .getElementById('loginAlert');
 
-var allEmails = localStorage.getItem("allEmails") != null ? localStorage.getItem("allEmails") != null : []
+
 var allEmails = [];
 
 if (localStorage.getItem("allEmails") != null) {
-    allEmails = localStorage.getItem("allEmails") != null;
+    allEmails = JSON.parse(localStorage.getItem("allEmails"));
 }
 
 
@@ -40,14 +40,14 @@ function login() {
 function isLoginCorrect(inputData) {
     for (var i = 0; i < allEmails.length; i++) {
         if (allEmails[i].email.toLowerCase() == inputData.email.toLowerCase() && allEmails[i].password == inputData.password) {
-            localStorage.setItem('userName', allEmails[i].name)
+            localStorage.setItem('userName',allEmails[i].name)
             return true;
         } else {
             return false;
         }
     }
 };
-function clearForm() {
+function clearForm(){
     signinEmail.value = '';
     signinPassword.value = '';
 };
